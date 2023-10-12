@@ -19,7 +19,6 @@ bot.command('start', async (ctx) => {
     .text('TypeScript')
     .row()
     .text('React')
-    .text('NodeJs')
     .row()
     .text('Случайный вопрос')
     .resized();
@@ -32,7 +31,7 @@ bot.command('start', async (ctx) => {
 });
 
 bot.hears(
-    ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'NodeJs', 'Случайный вопрос'], 
+    ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Случайный вопрос'], 
     async (ctx) => {
         const topic = ctx.message.text.toLowerCase();
         const { question, questionTopic } = getRandomQuestion(topic);
@@ -90,7 +89,7 @@ bot.on('callback_query:data', async (ctx) => {
         callbackData.type.split('-')[0], 
         callbackData.questionId
     );
-    await ctx.reply(`Неверно ✖️ Правильный ответ: ${answer} `);
+    await ctx.reply('Неверно ✖️');
     await ctx.answerCallbackQuery();
 });
 
